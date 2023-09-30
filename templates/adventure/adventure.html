@@ -1,0 +1,354 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/adventure.css' %}">
+    <title>MovieQuestPro {% block title %} | adventure movies {% endblock %}</title>
+</head>
+
+<body>
+    <!-- section -->
+    <section id="section-1">
+        <header class="navbar">
+            <input type="checkbox" name="" id="chk1">
+            <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'Project-images/bird-2.png' %}" width="60px" height="60px"></a></div>
+            <ul>
+                <!-- Active class class="active" -->
+                <li><a 
+                    {% if '/' == request.path %}
+                    class="nav_link activ" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'home' %}">Home</a>
+                </li>                
+                <li><a 
+                    {% if 'action' in request.path %}
+                    class="nav_link activ"
+                    {% else %}
+                    class="nav_link"
+                    {% endif %}
+                    href="{% url 'action' %}">Action</a>
+                </li>
+                <li><a 
+                    {% if 'all_movies' in request.path %}
+                    class="nav_link activ" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'all_movies' %}">Movies</a>
+                </li>
+                <li><a 
+                    {% if 'series' in request.path %}
+                    class="nav_link activ" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'series' %}">Series</a>
+                </li>
+                <li><a 
+                    {% if 'adventure' in request.path %}
+                    class="nav_link activ" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'adventure' %}">Adventures</a>
+                </li>
+                <li><a 
+                    {% if 'contacts' in request.path %}
+                    class="nav_link activ" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'contacts' %}">Contact us</a>
+                </li>
+            </ul>
+            <div class="search-box">
+                <div class="content-search">
+                    <form action="{% url 'search' %}" method="GET">
+                        <input type="text" name="keyword" id="srch" placeholder="Enter your search preference ...">
+                        <button class="bot" type="submit" name=""><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="menu">
+                    <label for="chk1">
+                        <i class="fa fa-bars"></i>
+                    </label>
+                </div>
+            </div>
+        </header>
+        <header class="header">
+            <ul>
+                <li id="m_l"><a class="header_details" href="#"><i class="fa fa-phone"></i>+2349022931212</a></li>
+                <li id="m_l"><a class="header_details" href="#"><i class="fa fa-envelope"></i>ezemosesjohn21997@gmail.com</a></li>
+            </ul>
+            <div class="search-box">
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li><a class="header_details" href="javaScript:{document.getElementById('logout').submit()}"><i class="fa fa-sign-out"></i>Logout</a>
+                        <form action="{% url 'logout'  %}" id="logout" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden">
+                        </form>
+                    </li>
+                    {% else %}
+                    <li><a class="header_details" href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Login</a></li>
+                    <li><a class="header_details" href="{% url 'signup' %}"><i class="fa fa-user"></i>Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </header>
+        
+        <div id="page-description">
+            <h1 class="x-name">
+                jumong
+            </h1>
+            <h3 class="x-title">
+                2020<div class="line"></div>Series<div class="line"></div>Historical<div class="line"></div>
+                <div class="red">Korean</div>
+            </h3>
+            <p class="x-description">
+                In the bustling city of New York, the streets echoed 
+                with the constant hustle and bustle of its inhabitants. Among them was Peter Parker,
+                a young photographer struggling to make ends meet. But he was more than just an average New Yorker;
+                he was Spider-Man, the city's friendly neighborhood superhero....
+            </p>
+            <div class="btn">
+                <ul>
+                    <li id="btn"><a href="https://www.youtube.com/watch?v=JfVOs4VSpmA"><i class="fa fa-play"></i>Play Trailer</a></li>
+                    <li><a href="#"><i class="fa fa-cloud-download"></i>Download</a></li>
+                </ul>
+            </div>
+            <div class="watch">
+                <ul>
+                    <li><a href="#"><i class="fa fa-plus"></i>Play List</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg">
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+        </div>
+    </section>
+
+    <!-- Section-2 -->
+    <section id="section-2">
+        <div class="container">
+            <div class="content">
+                <div class="desc"> </div>
+                <div class="thumbnail-list">
+                    <div class="wrapper"></div>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="next-button">Next</button>
+                <span class="line"></span>
+                <span class="ordinal-number"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section-3 -->
+    <section id="section-3">
+        <div class="content">
+            <div class="content-texts">
+                <h1>We have the best movies</h1>
+                <p>Enter the title or the category or genre of the
+                    movie you are interested in. Make sure to provide
+                    the proper details of the movie to enhance easy search.
+                    Year of production and producer of the movie,
+                    can also be used to search for your choiced movie.
+                </p>
+            </div>
+            <div class="content-search">
+                <form action="{% url 'search' %}" method="GET">
+                    <input type="text" name="keyword" id="srch" placeholder="Enter movie title here ...">
+                    <input type="submit" name="" value="Search">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="section-6">
+        <footer>
+            <a class="btn" href="{% url 'signup' %}">
+                <h5>Sign up for more updates</h5>
+            </a>
+            <div class="icons">
+                <ul>
+                    <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://google.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://google.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://google.com" target="_blank"><i class="fab fa-google"></i></a></li>
+                </ul>
+            </div>
+            <div class="icon-texts">
+                <a href="">Get the MovieQuest App</a>
+                <a href="">Help</a>
+                <a href="">Site Index</a>
+                <a href="">MovieQuestPro</a>
+                <a href="">Box Office EzeDev</a>
+                <a href="">MovieQuest Developer</a>
+            </div>
+            <div class="icon-texts-2">
+                <a href="">Press Room</a>
+                <a href="">Advertising</a>
+                <a href="">Jobs</a>
+                <a href="">Conditions of Use</a>
+                <a href="">Privacy Policy</a>
+                <a href="">Your Ads Privacy Choices</a>
+            </div>
+            <div class="bottom-text">
+                <h5>an EzeDev incorporation</h5>
+            </div>
+            <div class="bottom-text-2">
+                <p>&#169; 1990-2023 by EzeDev.com, Inc.</p>
+            </div>
+        </footer>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.navbar');
+            var navhead = document.querySelector('.header');
+            var navsearch = document.querySelector('.bot');
+            var scrolled = window.scrollY > 0;
+            navbar.classList.toggle('scrolled', scrolled);
+            navhead.classList.toggle('scrolled', scrolled);
+            navsearch.classList.toggle('scrolled', scrolled);
+        });
+
+        var data = [
+            {% for adventure in adventure_movies %}
+            {
+                img: "{{adventure.photo.url}}",
+                country: "{{adventure.origin}}",
+                place: "{{adventure.title}}",
+                describe:
+                    "{{adventure.description}}",
+            },
+            {% endfor %}
+        ];
+
+        const desc = document.querySelector(".desc");
+        const ordinalNumber = document.querySelector(".ordinal-number");
+
+        desc.innerHTML = "";
+        ordinalNumber.innerHTML = "";
+        for (let i = 0; i < data.length; i++) {
+            desc.innerHTML += `
+                <div class="wrapper">
+                    <span>
+                        <h5 class="country" style="--idx: 0">${data[i].country}</h5>
+                    </span>
+                    <span>
+                        <h1 class="place" style="--idx: 1">${data[i].place}</h1>
+                    </span>
+                    <span>
+                        <p class="describe" style="--idx: 2">${data[i].describe}</p>
+                    </span>
+                    <span>
+                        <a href=''><button class="discover-button" style="--idx: 3">Movie Details</button></a> 
+                    </span>
+                </div>
+            `;
+
+            ordinalNumber.innerHTML += `<h2>0${i + 1}</h2>`;
+        }
+        desc.children[0].classList.add("active");
+        ordinalNumber.children[0].classList.add("active");
+
+        const thumbnailListWrapper = document.querySelector(
+            ".thumbnail-list .wrapper"
+        );
+        thumbnailListWrapper.innerHTML += `
+                <div class="thumbnail zoom">
+                    <img src="${data[0].img}" alt="">
+                </div>
+            `;
+
+        for (let i = 1; i < data.length; i++) {
+            thumbnailListWrapper.innerHTML += `
+                <div class="thumbnail"  style="--idx: ${i - 1}">
+                    <img src="${data[i].img}" alt="">
+                </div>
+            `;
+        }
+
+        const nextBtn = document.querySelector(".navigation .next-button");
+        var currentIndex = 0;
+        nextBtn.addEventListener("click", () => {
+            nextBtn.disabled = true;
+            var clone = thumbnailListWrapper.children[0].cloneNode(true);
+            clone.classList.remove("zoom");
+            thumbnailListWrapper.appendChild(clone);
+            thumbnailListWrapper.children[1].classList.add("zoom");
+            setTimeout(() => {
+                thumbnailListWrapper.children[0].remove();
+                nextBtn.disabled = false;
+            }, 1000)
+
+            for (let i = 2; i < thumbnailListWrapper.childElementCount; i++) {
+                thumbnailListWrapper.children[i].style = `--idx: ${i - 2}`;
+            }
+            if (currentIndex < data.length - 1) {
+                currentIndex++;
+            } else currentIndex = 0;
+            for (let i = 0; i < data.length; i++) {
+                desc.children[i].classList.remove("active");
+                ordinalNumber.children[i].classList.remove("active");
+            }
+            desc.children[currentIndex].classList.add("active");
+            ordinalNumber.children[currentIndex].classList.add("active");
+            ordinalNumber.children[currentIndex].textContent = `0${currentIndex + 1}`;
+        });
+    </script>
+</body>
+
+</html>

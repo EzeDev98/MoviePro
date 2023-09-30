@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <title>Search</title>
+</head>
+
+<body>
+    <section id="section-1">
+        <header class="navbar">
+            <input type="checkbox" name="" id="chk1">
+            <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'Project-images/bird-2.png' %}" width="60px" height="60px"></a></div>
+            <ul>
+                <li><a 
+                    {% if '/' == request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'home' %}">Home</a>
+                </li>                
+                <li><a 
+                    {% if 'action' in request.path %}
+                    class="nav_link active"
+                    {% else %}
+                    class="nav_link"
+                    {% endif %}
+                    href="{% url 'action' %}">Action</a>
+                </li>
+                <li><a 
+                    {% if 'all_movies' in request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'all_movies' %}">Movies</a>
+                </li>
+                <li><a 
+                    {% if 'series' in request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'series' %}">Series</a>
+                </li>
+                <li><a 
+                    {% if 'adventure' in request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'adventure' %}">Adventures</a>
+                </li>
+                <li><a 
+                    {% if 'contacts' in request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'contacts' %}">Contact us</a>
+                </li>
+            </ul>
+            <div class="search-box">
+                <div class="content-search">
+                    <form action="{% url 'search' %}" method="GET">
+                        <input type="text" name="keyword" id="srch" placeholder="Enter your search preference ...">
+                        <button class="bot" type="submit" name=""><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="menu">
+                    <label for="chk1">
+                        <i class="fa fa-bars"></i>
+                    </label>
+                </div>
+            </div>
+        </header>
+        <header class="header">
+            <ul>
+                <li id="m_l"><a class="header_details" href="#"><i class="fa fa-phone"></i>+2349022931212</a></li>
+                <li id="m_l"><a class="header_details" href="#"><i class="fa fa-envelope"></i>ezemosesjohn21997@gmail.com</a></li>
+            </ul>
+            <div class="search-box">
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li><a class="header_details" href="javaScript:{document.getElementById('logout').submit()}"><i class="fa fa-sign-out"></i>Logout</a>
+                        <form action="{% url 'logout'  %}" id="logout" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden">
+                        </form>
+                    </li>
+                    {% else %}
+                    <li><a class="header_details" href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Login</a></li>
+                    <li><a class="header_details" href="{% url 'signup' %}"><i class="fa fa-user"></i>Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </header>
+
+        <div class="landing-page-details">
+            <div class="content">
+                <div class="content-texts">
+                    <h1> Search for any movie here </h1>
+                </div>
+                <div class="content-search">
+                    <form action="{% url 'search' %}" method="GET">
+                        <input type="text" name="keyword" id="srch" placeholder="Enter your search preference ...">
+                        <input type="submit" name="" value="Search">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg">
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+        </div>
+    </section>
+
+    <div id="search">
+        <div class="search-heading">
+            <h1 class="heading">Search results</h1>
+            <p>Here are the movies you searched for.</p>
+        </div>
+        <div class="search">
+            {% for search in search_movies %}
+            <a href="{% url 'single_search' search.id %}" class="search-box">
+                <div class="search-image">
+                    <img src="{{search.photo.url}}" alt="">
+                </div>
+                <h3>{{search.title}}</h3>
+                <h4>Origin: {{search.origin}}</h4>
+                <h4>Genre: {{search.genre}}</h4>
+                <h4>Year: {{search.year}}</h4>
+                <hr>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+            </a> 
+            {% endfor %}
+        </div>
+    </div>
+
+    <section id="section-6">
+        <footer>
+            <a class="btn" href="{% url 'signup' %}">
+                <h5>Sign up for more updates</h5>
+            </a>
+            <div class="icons">
+                <ul>
+                    <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://google.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://google.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://google.com" target="_blank"><i class="fab fa-google"></i></a></li>
+                </ul>
+            </div>
+            <div class="icon-texts">
+                <a href="">Get the MovieQuest App</a>
+                <a href="">Help</a>
+                <a href="">Site Index</a>
+                <a href="">MovieQuestPro</a>
+                <a href="">Box Office EzeDev</a>
+                <a href="">MovieQuest Developer</a>
+            </div>
+            <div class="icon-texts-2">
+                <a href="">Press Room</a>
+                <a href="">Advertising</a>
+                <a href="">Jobs</a>
+                <a href="">Conditions of Use</a>
+                <a href="">Privacy Policy</a>
+                <a href="">Your Ads Privacy Choices</a>
+            </div>
+            <div class="bottom-text">
+                <h5>an EzeDev incorporation</h5>
+            </div>
+            <div class="bottom-text-2">
+                <p>&#169; 1990-2023 by EzeDev.com, Inc.</p>
+            </div>
+        </footer>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.navbar');
+            var navhead = document.querySelector('.header');
+            var navsearch = document.querySelector('.bot');
+            var scrolled = window.scrollY > 0;
+            navbar.classList.toggle('scrolled', scrolled);
+            navhead.classList.toggle('scrolled', scrolled);
+            navsearch.classList.toggle('scrolled', scrolled);
+        });
+    </script>
+</body>
+
+</html>

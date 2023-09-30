@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/movie.css' %}">
+    <title>MovieQuestPro {% block title %} | {{single_movie.title}} {% endblock %}</title>
+</head>
+
+<body>
+    <section id="section-1">
+        <header class="navbar">
+            <input type="checkbox" name="" id="chk1">
+            <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'Project-images/bird-2.png' %}" width="60px" height="60px"></a></div>
+            <ul>
+                <li><a 
+                    {% if '/' == request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'home' %}">Home</a>
+                </li>                
+                <li><a 
+                    {% if 'action' in request.path %}
+                    class="nav_link active"
+                    {% else %}
+                    class="nav_link"
+                    {% endif %}
+                    href="{% url 'action' %}">Action</a>
+                </li>
+                <li><a 
+                    {% if 'all_movies' in request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'all_movies' %}">Movies</a>
+                </li>
+                <li><a 
+                    {% if 'series' in request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'series' %}">Series</a>
+                </li>
+                <li><a 
+                    {% if 'adventure' in request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'adventure' %}">Adventures</a>
+                </li>
+                <li><a 
+                    {% if 'contacts' in request.path %}
+                    class="nav_link active" 
+                    {% else %}
+                    class="nav_link" 
+                    {% endif %}
+                    href="{% url 'contacts' %}">Contact us</a>
+                </li>
+            </ul>
+            <div class="search-box">
+                <div class="content-search">
+                    <form action="{% url 'search' %}" method="GET">
+                        <input type="text" name="keyword" id="srch" placeholder="Enter your search preference ...">
+                        <button class="bot" type="submit" name=""><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="menu">
+                    <label for="chk1">
+                        <i class="fa fa-bars"></i>
+                    </label>
+                </div>
+            </div>
+        </header>
+        <header class="header">
+            <ul>
+                <li id="m_l"><a class="header_details" href="#"><i class="fa fa-phone"></i>+2349022931212</a></li>
+                <li id="m_l"><a class="header_details" href="#"><i class="fa fa-envelope"></i>ezemosesjohn21997@gmail.com</a></li>
+            </ul>
+            <div class="search-box">
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li><a class="header_details" href="javaScript:{document.getElementById('logout').submit()}"><i class="fa fa-sign-out"></i>Logout</a>
+                        <form action="{% url 'logout'  %}" id="logout" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden">
+                        </form>
+                    </li>
+                    {% else %}
+                    <li><a class="header_details" href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Login</a></li>
+                    <li><a class="header_details" href="{% url 'signup' %}"><i class="fa fa-user"></i>Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </header>
+
+        <div class="landing-page-details">
+            <div class="content">
+                <div class="content-texts">
+                    <h1> Beyond the Horizon. </h1>
+                    <h2>Embark on an Unforgettable Cinematic Journey</h2>
+                </div>
+                <div class="content-search">
+                    <form action="{% url 'search' %}">
+                        <input type="text" name="keyword" id="srch" placeholder="Enter your search preference ...">
+                        <input type="submit" name="" value="Search">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg">
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+            <div id="sp"></div>
+        </div>
+    </section>
+
+    <!-- Single-page -->
+    <section id="page">
+        <div class="page-cover">
+            <div class="image">
+                <div class="top-details">
+                    <div class="title">
+                        <h1>{{single_movie.title}}</h1>
+                        <h3>{{single_movie.origin}}</h3>
+                        <h3 id="mb">{{single_movie.time}}</h3>
+                    </div>
+                </div>
+                <div class="images">
+                    <img src="{{single_movie.photo.url}}">
+                </div>
+                <div class="sub-details">
+                    <h3>{{single_movie.category_1}}</h3>
+                    <h3>{{single_movie.category_2}}</h3>
+                    <h3>{{single_movie.category_3}}</h3>
+                    <h3>{{single_movie.category_4}}</h3>
+                </div>
+            </div>
+            <div class="page-desc">
+                <div class="cast">
+                    <hr>
+                    <h3>Director <span>{{single_movie.director}}</span></h3>
+                    <hr>
+                    <h3>Writer <span>{{single_movie.writer}}</span></h3>
+                    <hr>
+                    <h3>Stars <span>{{single_movie.stars}}</span></h3>
+                    <hr>
+                    <h3>Feature <span>{{single_movie.features}}</span></h3>
+                    <hr>
+                    <h2 class="quest"><span>MovieQuestPro</span> See production,box office and company info</h2>
+                </div>
+                <div class="description">
+                    <h1>{{single_movie.title}}</h1>
+                    <p>
+                        {{single_movie.description}}
+                    </p>
+                    <h4><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </h4>
+                </div>
+            <div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section id="section-6">
+        <footer>
+            <a class="btn" href="{% url 'signup' %}">
+                <h5>Sign up for more updates</h5>
+            </a>
+            <div class="icons">
+                <ul>
+                    <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://google.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://google.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://google.com" target="_blank"><i class="fab fa-google"></i></a></li>
+                </ul>
+            </div>
+            <div class="icon-texts">
+                <a href="">Get the MovieQuest App</a>
+                <a href="">Help</a>
+                <a href="">Site Index</a>
+                <a href="">MovieQuestPro</a>
+                <a href="">Box Office EzeDev</a>
+                <a href="">MovieQuest Developer</a>
+            </div>
+            <div class="icon-texts-2">
+                <a href="">Press Room</a>
+                <a href="">Advertising</a>
+                <a href="">Jobs</a>
+                <a href="">Conditions of Use</a>
+                <a href="">Privacy Policy</a>
+                <a href="">Your Ads Privacy Choices</a>
+            </div>
+            <div class="bottom-text">
+                <h5>an EzeDev incorporation</h5>
+            </div>
+            <div class="bottom-text-2">
+                <p>&#169; 1990-2023 by EzeDev.com, Inc.</p>
+            </div>
+        </footer>
+    </section>
+
+
+    <!-- JavaScript -->
+    <script>
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.navbar');
+            var navhead = document.querySelector('.header');
+            var navsearch = document.querySelector('.bot');
+            var scrolled = window.scrollY > 0;
+            navbar.classList.toggle('scrolled', scrolled);
+            navhead.classList.toggle('scrolled', scrolled);
+            navsearch.classList.toggle('scrolled', scrolled);
+        });
+    </script>
+</body>
+
+</html>
